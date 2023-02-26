@@ -1,23 +1,16 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import DynamicObj from './components/dynamicObj';
+import Timer from './components/timer';
+
 
 function App() {
+  const [showTimer, setShowTimer] = useState(true)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DynamicObj />
+      { showTimer? <Timer /> : <></>}
+      <button onClick={() => setShowTimer(!showTimer)}>showTimer</button>
     </div>
   );
 }
