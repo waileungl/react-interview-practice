@@ -1,9 +1,11 @@
 import React from "react";
 
-const Test = () => {
+const Timer = () => {
     return(
-        <></>
+        <>
+        write a timer for me
+        </>
     )
 }
 
-export default Test;
+export default Timer;
