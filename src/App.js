@@ -8,9 +8,7 @@ function App() {
   const [showTimer, setShowTimer] = useState(true)
   return (
     <div className="App">
-      <DynamicObj />
-      { showTimer? <Timer /> : <></>}
-      <button onClick={() => setShowTimer(!showTimer)}>showTimer</button>
+      <Timer />
     </div>
   );
 }

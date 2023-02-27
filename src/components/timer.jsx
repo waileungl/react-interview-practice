@@ -1,26 +1,29 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const Timer = () => {
-    const [count, setCount] = useState(0);
-    const [toggle, setToggle] = useState(true);
+    const [isPause, setIsPause] = useState(false)
+    const [count, setCount] = useState(10)
+
 
     useEffect(() => {
-        const intervalId = setInterval(() => {
-            setCount(count => count + 1);
-            
-        }, 1000);
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, []);
-    
+        let countDown;
+        if (count > 0 && !isPause) {
+            countDown = setInterval(() => {
+                setCount(count - 1)
+            }, 1000)
+        }
+
+        return () => clearInterval(countDown)
+    }, [count, isPause])
+
     return (
-        <div>
-            Timer: {count}
-            <button onClick={() => setToggle(!toggle)}>toggle timer</button>
-        </div>
-    );
+        <>
+            {count}
+            <button onClick={() => setIsPause(!isPause)}>{isPause ? "Resume" : "Pause"}</button>
+
+            <iframe src="https://devbud.wlliu.com/" frameborder="0" height={800} width={1200}></iframe>
+        </>
+    )
 }
 
 export default Timer;
-
